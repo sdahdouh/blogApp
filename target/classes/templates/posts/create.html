@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'/>
+<link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}"/>
+<link rel="icon" href="../public/img/avocado.png" th:href="@{/img/avocado.png}"/>
+<script src="../public/js/jquery-3.1.0.min.js" th:src="@{/js/blog/blog-scripts.js}"></script>
+<head th:replace="layout :: site-head">
+    <title>Spring MVC Blog</title>
+</head>
+
+<body>
+    <header th:replace="layout :: site-header" />
+    <main id="posts">
+        <div id="postsCreate">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="postPanel">
+        <div id="createpost">
+        <form action="#" th:action="@{/posts/create}" th:object="${newPost}" method="post" id="formcreate">
+            <h1 class="createPostsHead">Create Post</h1>
+            <div class="fillIn">
+            <h2 class="createfont">Title:</h2>
+            <input type="text" th:field="*{title}"/>
+            <h2 class="createfont">Body:</h2>
+            <textarea type="text" th:field="*{body}" rows="5" cols="30" maxlength="140" placeholder="Say whatever you want to say in 140 characters" wrap="hard"/>
+            <input type="submit" value="Create Post"/>
+            </div>
+        </form>
+        </div>
+        </div>
+        </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer th:replace="layout :: site-footer" />
+</body>
+
+</html>
+
+
+<!--
+@GetMapping("/newPost")
+public String create(Model model) {
+model.addAttribute("newPost", new Post());
+return "newPost";
+}
+
+@PostMapping("/newPost")
+public String createSubmit(@ModelAttribute Post newPost) {
+return "newPost";
+}-->

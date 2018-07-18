@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <head th:replace="layout :: site-head">
+        <title>Spring MVC Blog</title>
+    </head>
+
+    <body>
+        <!--<header th:replace="layout :: site-header" />-->
+        <div th:if="${param.error}">
+            Invalid Username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out!
+        </div>
+            <main id="loginSpace">
+                <div id="login_background">
+                <form th:action="@{/login}" method="post" id="form_login">
+                    <p id="loghead">Login</p>
+                    <div><label class="labelStyle">User Name <input type="text" name="username" class="inputStyle"/></label></div>
+                    <div><label class="labelStyle">Password <input type="password" name="password" class="inputStyle"/></label></div>
+                    <div><input type="submit" value="Sign in" id="btnLogin" /></div>
+                    <div id="joinus"><a href="users/register.html" th:href="@{/users/register}">Join us!</a></div>
+                </form>
+                </div>
+            </main>
+        <!--<footer th:replace="layout :: site-footer" />-->
+    </body>
+</html>

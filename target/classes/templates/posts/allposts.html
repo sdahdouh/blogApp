@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Josefin Slab' rel='stylesheet'/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<head th:replace="layout::site-head">
+    <meta charset="UTF-8"/>
+    <title>All Posts</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header"></header>
+
+<main id="allPosts">
+    <h1 class="allPostsHead">All Posts</h1>
+        <div class="container">
+            <article th:each="p : ${allPosts}">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div id="postPanel">
+                            <h2 class="title" th:text="${p.title}">Post Title</h2>
+                            <div class="date">
+                                <i>Posted on</i>
+                                <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}"/>
+                                <span th:if="${p.author}" th:remove="tag">
+                                    <i>by</i>
+                                    <span th:text="${p.author.fullName != null ?
+                                            p.author.fullName : p.author.username}"/>
+                                </span>
+                            </div>
+                            <p class="content" th:utext="${p.body}">Post content</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+</main>
+<footer th:replace="layout :: site-footer"/>
+</body>
+</html>

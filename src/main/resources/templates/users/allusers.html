@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"/>
+<link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Josefin Slab' rel='stylesheet'/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<head th:replace="layout :: site-head">
+    <title>Spring MVC Blog</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header" />
+<main id="users">
+    <div id="alluser">
+        <h1 class="allPostsHead">All Users</h1>
+        <div class="container">
+        <article th:each="p : ${allUsers}">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="postPanel">
+            <h3 class="title" th:text="${p.username}">Username</h3>
+                        <div id="userpanelcontent">
+            <span>ID: <span th:text="${p.id}"></span></span><br/>
+            <span>Full name: <span th:text="${p.fullName}"></span></span><br/>
+            <span>Activity Points: <span th:text="${p.activityPoints}"></span></span><br/>
+                        </div>
+            </div>
+            </div>
+            </div>
+        </article>
+        </div>
+    </div>
+</main>
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>

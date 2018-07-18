@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head th:fragment="site-head">
+    <meta charset="UTF-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="icon" href="../public/img/avocado.png" th:href="@{/img/pineapple-fruit-emoj-symbol-food-3c996c1d89b6ceec-512x512.png}"/>
+    <script src="../public/js/jquery-3.1.0.min.js" th:src="@{/js/blog/blog-scripts.js}"></script>
+    <meta th:include="this :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:fragment="site-header">
+    <div class="navbar">
+        <ul class="navcont" >
+            <li><a href="/"> <img src="../public/img/pineapple.png" th:src="@{/img/pineapple.png}" /></a></li>
+            <li><a href="index.html" th:href="@{/}">Home</a></li>
+            <li><a href="posts/allposts.html" th:href="@{/posts/allposts}">All posts</a></li>
+            <li><a href="posts/create.hultml" th:href="@{/posts/create}">Create post</a></li>
+            <li><a href="users/allusers.html" th:href="@{/users/allusers}">All users</a></li>
+        </ul>
+        <div id="logged-in-info">
+            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+    </div>
+
+</header>
+<h1>Welcome</h1>
+<p>Welcome to the Java HeroBlog!</p>
+<footer th:fragment="site-footer">&copy; Soraya Dahdouh,2017</footer>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'/>
+
+<head th:replace="layout :: site-head">
+    <title>Spring MVC Blog</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header" />
+<h1>Edit Post</h1>
+<main id="posts">
+    <form method="edit" th:object="${editPost}">
+        <div>
+        <label id="post" value="Post"/>
+        </div>
+    </form>
+</main>
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>
